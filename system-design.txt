@@ -1,0 +1,163 @@
+ELI'S YUMMY KITCHEN INVENTORY AND BUSINESS MONITORING SYSTEM
+SYSTEM DESIGN DOCUMENTATION
+
+Prepared by: Elaisa Mae G. Lagrimas
+Assigned Task: System Design and Documentation
+Project Group: Team 4
+
+1. SYSTEM OVERVIEW
+
+The proposed Inventory and Business Monitoring System is designed to improve the recording, consolidation, and monitoring of inventory and sales information at Eli's Yummy Kitchen. It addresses the manual transfer of branch-level records from physical inventory sheets into digital spreadsheets.
+
+The proposed system will centralize business records and support inventory monitoring, sales recording, production and dispatch tracking, discrepancy identification, and weekly audit reporting.
+
+2. SYSTEM USERS AND ROLES
+
+2.1 Business Owner / Administrator
+- Manage users and master records.
+- View consolidated sales and inventory information.
+- Review inventory discrepancies and approved adjustments.
+- Review and finalize weekly audit reports.
+- Monitor dispatches, stock levels, and branch submissions.
+
+2.2 Production Head / Supervisor
+- Record production output.
+- Prepare and confirm dispatch records.
+- Monitor relevant raw materials and packaging supplies.
+- Review production tasks and dispatch information.
+
+2.3 Sales Staff
+- Record sales transactions at their assigned pop-up location.
+- Record physical inventory counts and stock movements.
+- Confirm received dispatch quantities.
+- Submit daily branch sales and inventory summaries.
+- Monitor pending offline transactions when applicable.
+
+3. PROPOSED SYSTEM COMPONENTS
+
+3.1 Sales Recording Module
+Records sales transactions by branch, date and time, product, quantity, unit price, and submitting user.
+
+3.2 Inventory Management Module
+Maintains inventory records for raw materials, packaging supplies, and prepared or processed products. Supports stock received, stock sold or issued, approved adjustments, physical counts, and remaining-stock calculations.
+
+3.3 Production and Dispatch Module
+Records production output and dispatches from the production hub to designated pop-up locations. Supports confirmation of received quantities and review of dispatch differences. 
+
+3.4 Supply and Packaging Tracking Module
+Records received and issued supplies and supports monitoring of remaining quantities and configurable low-stock thresholds.
+
+3.5 Discrepancy Monitoring Module
+Compares expected inventory with verified physical counts. Flags differences for review without automatically assigning blame or applying employee deductions.
+
+3.6 Reporting Module
+Supports daily branch sales and inventory summaries and weekly audit reports covering the Wednesday-to-Tuesday audit period.
+
+3.7 User Access Control
+Uses authenticated accounts and role-based permissions to restrict access according to assigned responsibilities.
+
+3.8 Offline Transaction Recording
+Allows temporary local recording when internet connectivity is unavailable. Pending transactions should synchronize when the connection returns, with controls to prevent duplicate posting.
+
+4. PROPOSED SYSTEM WORKFLOW
+
+Step 1: Production personnel record production output.
+Step 2: Authorized personnel record dispatches to pop-up branches.
+Step 3: Branch staff confirm the quantities received.
+Step 4: Sales staff record sales and relevant stock movements.
+Step 5: The system updates inventory records using configured rules.
+Step 6: Staff record physical stock counts at required checkpoints.
+Step 7: The system compares expected stock with physical counts.
+Step 8: Potential discrepancies are flagged for authorized review.
+Step 9: The system consolidates branch records and prepares reports.
+Step 10: The owner reviews findings and the weekly audit report.
+
+5. PROPOSED DATA ENTITIES
+
+The system may include the following entities:
+- Users and roles
+- Products
+- Raw Materials
+- Packaging Supplies
+- Branches
+- Branch Inventory
+- Sales Transactions
+- Production Records
+- Dispatch Records
+- Physical Inventory Counts
+- Inventory Adjustments
+- Discrepancies
+- Weekly Audit Reports
+
+Detailed attributes, relationships, and validation rules must be confirmed during database design and requirements validation.
+
+6. INVENTORY MONITORING LOGIC
+
+Expected closing stock should be calculated using the agreed inventory movement rules:
+
+Expected Closing Stock =
+Opening Stock + Stock Received - Recorded Sales or Stock Issued + or - Approved Adjustments
+
+Quantity Variance =
+Physical Count - Expected Closing Stock
+
+A variance indicates a difference that requires review. The owner or authorized reviewer should check supporting sales, dispatch, and inventory records and document the review outcome.
+
+Any equivalent monetary amount must follow the valuation method confirmed by the business owner.
+
+7. REPORTING DESIGN
+
+The proposed reporting module may include:
+
+- Daily Branch Sales Summary
+- Daily Inventory Summary
+- Weekly Audit Report
+- Dispatch Report
+- Supply and Packaging Report
+- Discrepancy Statement
+
+The weekly audit report should cover Wednesday through Tuesday and include relevant branch summaries, expected and physical quantities, discrepancies, supporting record references, and review notes where available.
+
+8. NON-FUNCTIONAL DESIGN CONSIDERATIONS
+
+Usability:
+Use simple labels, short forms, and minimal steps for common tasks.
+
+Reliability:
+Preserve saved transactions during temporary connectivity issues.
+
+Data Integrity:
+Validate required fields, quantities, and transaction records.
+
+Security:
+Use authenticated accounts and role-based access permissions.
+
+Auditability:
+Retain relevant user, timestamp, branch, and change information.
+
+Backup and Recovery:
+Define a database backup schedule and test the recovery process.
+
+9. PROPOSED TECHNICAL ARCHITECTURE
+
+The proposed design may use:
+- A responsive web interface for owner, production, and sales users.
+- A centralized database for structured business transactions.
+- Temporary local storage for pending offline transactions.
+- Synchronization controls and unique transaction identifiers.
+- A reporting component for daily and weekly business summaries.
+- Authentication, access permissions, audit logs, and backups.
+
+The exact technology stack, hosting arrangement, device availability, and implementation details remain subject to technical evaluation.
+
+10. SCOPE AND LIMITATIONS
+
+The proposed system focuses on sales and inventory recording, production and dispatch monitoring, supply tracking, discrepancy review, role-based access, offline transaction recording, and business reporting.
+
+Marketing management, social media scheduling, graphic design, full accounting, payroll, and tax filing are outside the current project scope.
+
+11. DOCUMENT STATUS
+
+This document describes a proposed system design based on the Eli's Yummy Kitchen feasibility study. It is not evidence of a completed implementation or tested system.
+
+Inventory rules, detailed data fields, user permissions, offline synchronization behavior, available devices, and reporting needs must be validated before implementation.
